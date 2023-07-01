@@ -6,15 +6,15 @@
   "module": "dist/react-number-format.es.js",
   "types": "types/index.d.ts",
   "sideEffects": false,
-  "author": "Sudhanshu Yadav",
+  "author": "Sakamoto Junya",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/s-yadav/react-number-format"
+    "url": "git+https://github.com/KakuKaku-Co/react-number-format.git"
   },
   "bugs": {
-    "mail": "sudhanshuyadav2@gmail.com",
-    "url": "https://github.com/s-yadav/react-number-format/issues"
+    "mail": "sakamoto.junya@kakukaku.app",
+    "url": "https://github.com/KakuKaku-Co/react-number-format/issues"
   },
   "keywords": [
     "react-component",
