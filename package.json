@@ -112,6 +112,7 @@
     "react-dom": "^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-number-format": "git+https://github.com/s-yadav/react-number-format.git"
   }
 }
