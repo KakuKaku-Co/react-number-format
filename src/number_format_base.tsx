@@ -27,6 +27,14 @@ function defaultFormat(value: string) {
   return value;
 }
 
+
+// 全角数字を半角に変換する関数
+function toHalfWidth(strVal: string): string {
+  return strVal.replace(/[０-９]/g, function (s: string): string {
+    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+  });
+}
+
 export default function NumberFormatBase<BaseType = InputAttributes>(
   props: NumberFormatBaseProps<BaseType>,
 ): React.ReactElement {
@@ -149,9 +157,9 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     inputValue?: string;
     input?: HTMLInputElement | null;
     event?:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.FocusEvent<HTMLInputElement>
-      | React.KeyboardEvent<HTMLInputElement>;
+    | React.ChangeEvent<HTMLInputElement>
+    | React.FocusEvent<HTMLInputElement>
+    | React.KeyboardEvent<HTMLInputElement>;
     source: SourceType;
     caretPos?: number;
     setCaretPosition?: Boolean;
@@ -294,17 +302,19 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
 
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const el = e.target;
-    const inputValue = el.value;
-
+    const inputValue = toHalfWidth(el.value);
     const changed = formatInputValue(inputValue, e, SourceType.event);
-
     if (changed) onChange(e);
   };
 
+
+
   const _onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(e.key)
     const el = e.target as HTMLInputElement;
     const { key } = e;
-    const { selectionStart, selectionEnd, value = '' } = el;
+    const { selectionStart, selectionEnd } = el;
+    const value = toHalfWidth(el.value)
 
     let expectedCaretPosition;
 

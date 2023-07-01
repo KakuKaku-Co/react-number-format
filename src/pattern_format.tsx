@@ -192,6 +192,7 @@ export function usePatternFormat<BaseType = InputAttributes>(
   };
 
   const _onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(e)
     const { key } = e;
     const el = e.target as HTMLInputElement;
     const { selectionStart, selectionEnd, value } = el;

@@ -153,6 +153,7 @@ class App extends React.Component {
         <div className="example">
           <h3>Custom Numeral: add support for custom languages </h3>
           <NumericFormat customNumerals={['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']} />
+          <input />
         </div>
       </div>
     );
