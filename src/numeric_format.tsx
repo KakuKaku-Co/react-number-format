@@ -399,12 +399,9 @@ export function useNumericFormat<BaseType = InputAttributes>(
   );
 
   const _onKeyDown: InputAttributes['onKeyDown'] = (e) => {
-    console.log(e)
     if (e.key === '3') {
-      console.log("通過")
       e.keyCode = 51
       e.which = 51
-      console.log(e)
     }
     const el = e.target as HTMLInputElement;
     const { key } = e;

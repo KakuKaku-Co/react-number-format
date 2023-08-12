@@ -625,7 +625,6 @@ function NumberFormatBase(props) {
             { onChange(e); }
     };
     var _onKeyDown = function (e) {
-        console.log(e.key);
         var el = e.target;
         var key = e.key;
         var selectionStart = el.selectionStart;
@@ -1040,12 +1039,9 @@ function useNumericFormat(props) {
     var formattedValue = ref_0.formattedValue;
     var _onValueChange = ref[1];
     var _onKeyDown = function (e) {
-        console.log(e);
         if (e.key === '3') {
-            console.log("通過");
             e.keyCode = 51;
             e.which = 51;
-            console.log(e);
         }
         var el = e.target;
         var key = e.key;
@@ -1272,7 +1268,6 @@ function usePatternFormat(props) {
         return getCaretBoundary$1(formattedValue, props);
     };
     var _onKeyDown = function (e) {
-        console.log(e);
         var key = e.key;
         var el = e.target;
         var selectionStart = el.selectionStart;

@@ -310,7 +310,6 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
 
 
   const _onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(e.key)
     const el = e.target as HTMLInputElement;
     const { key } = e;
     const { selectionStart, selectionEnd } = el;
