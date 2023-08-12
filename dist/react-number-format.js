@@ -1274,7 +1274,7 @@
             return getCaretBoundary$1(formattedValue, props);
         };
         var _onKeyDown = function (e) {
-           var key = e.key;
+            var key = e.key;
             var el = e.target;
             var selectionStart = el.selectionStart;
             var selectionEnd = el.selectionEnd;
