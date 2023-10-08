@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NumericFormat, { useNumericFormat } from '../../src/numeric_format';
 import PatternFormat from '../../src/pattern_format';
@@ -154,72 +154,70 @@ class App extends React.Component {
     setTimeout(() => {
       this.setState({ thousandSeparator: ' ' });
     }, 5000);
+  }
 
-    // Clean up function
-    return () => clearTimeout(timer);
-  }, []); // The empty array makes this run on mount and unmount only
+  render() {
+    return (
+      <div>
+        <div className="example">
+          <h3>Prefix and thousand separator : Format currency as text</h3>
+          <NumericFormat value={2456981} displayType="text" thousandSeparator={true} prefix="$" />
+        </div>
 
-  return (
-    <div>
-      <div className="example">
-        <h3>Prefix and thousand separator : Format currency as text</h3>
-        <NumericFormat value={2456981} displayType="text" thousandSeparator={true} prefix="$" />
-      </div>
+        <div className="example">
+          <h3>Format with pattern : Format credit card as text</h3>
+          <PatternFormat value={4111111111111111} displayType="text" format="#### #### #### ####" />
+        </div>
 
-      <div className="example">
-        <h3>Format with pattern : Format credit card as text</h3>
-        <PatternFormat value={4111111111111111} displayType="text" format="#### #### #### ####" />
-      </div>
+        <div className="example">
+          <h3>Custom renderText method</h3>
+          <PatternFormat
+            value={4111111111111111}
+            displayType="text"
+            format="#### #### #### ####"
+            renderText={(value) => <i>{value}</i>}
+          />
+        </div>
 
-      <div className="example">
-        <h3>Custom renderText method</h3>
-        <PatternFormat
-          value={4111111111111111}
-          displayType="text"
-          format="#### #### #### ####"
-          renderText={(value) => <i>{value}</i>}
-        />
-      </div>
+        <div className="example">
+          <h3>Prefix and thousand separator : Format currency in input</h3>
+          <NumericFormat
+            thousandSeparator={this.state.thousandSeparator}
+            decimalSeparator=","
+            value={this.state.test}
+            valueIsNumericString
+            prefix="$"
+            onValueChange={(values) => this.setState({ test: values.value })}
+            onChange={(e) => console.log(e.target.value)}
+            onBlur={(e) => console.log(e.target.value)}
+          />
+          <button onClick={() => this.setState({ thousandSeparator: ' ' })}>Ok</button>
+        </div>
 
-      <div className="example">
-        <h3>Prefix and thousand separator : Format currency in input</h3>
-        <NumericFormat
-          thousandSeparator={thousandSeparator}
-          decimalSeparator=","
-          value={test}
-          valueIsNumericString
-          prefix="$"
-          onValueChange={(values) => setTest(values.value)}
-          onChange={(e) => console.log(e.target.value)}
-          onBlur={(e) => console.log(e.target.value)}
-        />
-        <button onClick={() => setThousandSeparator(' ')}>Ok</button>
-      </div>
+        <div className="example">
+          <h3>Allow Leading Zeros: Will retain leading zeros onBlur</h3>
+          <NumericFormat allowLeadingZeros={true} />
+        </div>
 
-      <div className="example">
-        <h3>Allow Leading Zeros: Will retain leading zeros onBlur</h3>
-        <NumericFormat allowLeadingZeros={true} />
-      </div>
+        <div className="example">
+          <h3>Indian (lakh) style number grouping</h3>
+          <NumericFormat thousandSeparator={true} prefix="₹" thousandsGroupStyle="lakh" />
+        </div>
 
-      <div className="example">
-        <h3>Indian (lakh) style number grouping</h3>
-        <NumericFormat thousandSeparator={true} prefix="₹" thousandsGroupStyle="lakh" />
-      </div>
+        <div className="example">
+          <h3>Chinese (wan) style number grouping</h3>
+          <NumericFormat thousandSeparator={true} prefix="¥" thousandsGroupStyle="wan" />
+        </div>
 
-      <div className="example">
-        <h3>Chinese (wan) style number grouping</h3>
-        <NumericFormat thousandSeparator={true} prefix="¥" thousandsGroupStyle="wan" />
-      </div>
-
-      <div className="example">
-        <h3>Decimal scale : Format currency in input with decimal scale</h3>
-        <NumericFormat
-          thousandSeparator={true}
-          decimalScale={3}
-          fixedDecimalScale={true}
-          prefix="$"
-        />
-      </div>
+        <div className="example">
+          <h3>Decimal scale : Format currency in input with decimal scale</h3>
+          <NumericFormat
+            thousandSeparator={true}
+            decimalScale={3}
+            fixedDecimalScale={true}
+            prefix="$"
+          />
+        </div>
 
         <div className="example">
           <h3>Custom thousand separator : Format currency in input</h3>
@@ -314,5 +312,5 @@ const ThemedApp = () => {
   );
 };
 
-const root = createRoot(document.getElementById('app'));
+const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<ThemedApp />);
