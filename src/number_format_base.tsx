@@ -27,11 +27,10 @@ function defaultFormat(value: string) {
   return value;
 }
 
-
 // 全角数字を半角に変換する関数
 function toHalfWidth(strVal: string): string {
   return strVal.replace(/[０-９]/g, function (s: string): string {
-    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
   });
 }
 
@@ -157,9 +156,9 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     inputValue?: string;
     input?: HTMLInputElement | null;
     event?:
-    | React.ChangeEvent<HTMLInputElement>
-    | React.FocusEvent<HTMLInputElement>
-    | React.KeyboardEvent<HTMLInputElement>;
+      | React.ChangeEvent<HTMLInputElement>
+      | React.FocusEvent<HTMLInputElement>
+      | React.KeyboardEvent<HTMLInputElement>;
     source: SourceType;
     caretPos?: number;
     setCaretPosition?: Boolean;
@@ -238,7 +237,7 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     : undefined;
 
   // needed to prevent warning with useLayoutEffect on server
-  const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
+  const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
   useIsomorphicLayoutEffect(() => {
     const input = focusedElm.current;
@@ -307,13 +306,11 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     if (changed) onChange(e);
   };
 
-
-
   const _onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const el = e.target as HTMLInputElement;
     const { key } = e;
     const { selectionStart, selectionEnd } = el;
-    const value = toHalfWidth(el.value)
+    const value = toHalfWidth(el.value);
 
     let expectedCaretPosition;
 

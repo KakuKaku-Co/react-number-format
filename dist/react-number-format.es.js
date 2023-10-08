@@ -432,7 +432,7 @@ function defaultFormat(value) {
 // 全角数字を半角に変換する関数
 function toHalfWidth(strVal) {
     return strVal.replace(/[０-９]/g, function (s) {
-        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+        return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
     });
 }
 function NumberFormatBase(props) {

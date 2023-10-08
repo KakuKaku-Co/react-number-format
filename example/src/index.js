@@ -14,7 +14,6 @@ const App = () => {
   const [tmpValue, setTmpValue] = useState(0);
   const [tmpValue2, setTmpValue2] = useState(0);
 
-
   // Replace the constructor's setTimeout with a useEffect
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,7 +22,7 @@ const App = () => {
 
     // Clean up function
     return () => clearTimeout(timer);
-  }, []);  // The empty array makes this run on mount and unmount only
+  }, []); // The empty array makes this run on mount and unmount only
 
   return (
     <div>
@@ -91,8 +90,25 @@ const App = () => {
         <h3>Custom thousand separator : Format currency in input</h3>
         <div>ThousandSeparator: '.', decimalSeparator=','</div>
         <div>
-          <NumericFormat value={tmpValue} onChange={() => { console.log("onchange1"); setTmpValue2(2) }} thousandSeparator="." decimalSeparator="," prefix="$" />
-          <NumericFormat value={tmpValue2} onChange={() => { console.log("onchange2") }} thousandSeparator="." decimalSeparator="," prefix="$" />
+          <NumericFormat
+            value={tmpValue}
+            onChange={() => {
+              console.log('onchange1');
+              setTmpValue2(2);
+            }}
+            thousandSeparator="."
+            decimalSeparator=","
+            prefix="$"
+          />
+          <NumericFormat
+            value={tmpValue2}
+            onChange={() => {
+              console.log('onchange2');
+            }}
+            thousandSeparator="."
+            decimalSeparator=","
+            prefix="$"
+          />
         </div>
         <br />
         <div>ThousandSeparator: ' ', decimalSeparator='.'</div>
@@ -165,7 +181,7 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 const ThemedApp = () => {
   return (

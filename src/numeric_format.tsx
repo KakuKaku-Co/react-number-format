@@ -400,8 +400,8 @@ export function useNumericFormat<BaseType = InputAttributes>(
 
   const _onKeyDown: InputAttributes['onKeyDown'] = (e) => {
     if (e.key === '3') {
-      e.keyCode = 51
-      e.which = 51
+      e.keyCode = 51;
+      e.which = 51;
     }
     const el = e.target as HTMLInputElement;
     const { key } = e;
