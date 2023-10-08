@@ -57,6 +57,7 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
     value: propValue,
     getCaretBoundary = caretUnknownFormatBoundary,
     isValidInputCharacter = charIsNumber,
+    isCharacterSame,
     ...otherProps
   } = props;
 
@@ -142,6 +143,7 @@ export default function NumberFormatBase<BaseType = InputAttributes>(
       caretPos,
       caretBoundary,
       isValidInputCharacter,
+      isCharacterSame,
     );
 
     //correct caret position if its outside of editable area
